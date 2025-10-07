@@ -65,20 +65,6 @@ The core principle of the Gemini Code Helper is privacy. By using the chrome.ai 
 
 This on-device architecture makes it a trusted tool for developers working with proprietary or sensitive code.
 
-📂 Project Structure
-The project maintains a simple and scalable structure for easy development and maintenance.
-
-gemini-code-helper/
-├── icons/
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
-├── background.js       # Service worker for context menus & AI logic
-├── manifest.json       # The core extension configuration file
-├── sidepanel.html      # The HTML structure for the UI panel
-├── sidepanel.js        # The JavaScript logic for the UI panel
-└── README.md           # Project documentation (this file)
-
 ⚙️ Installation & Setup
 
 To run the extension locally for development:
