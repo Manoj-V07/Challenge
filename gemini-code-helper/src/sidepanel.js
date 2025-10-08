@@ -105,7 +105,16 @@ document.addEventListener('DOMContentLoaded', () => {
         outputContainer.classList.remove('hidden');
         
         const sanitizedContent = content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        const formattedContent = marked.parse(sanitizedContent);
+        let formattedContent = sanitizedContent;
+        try {
+            if (typeof marked !== 'undefined' && marked?.parse) {
+                formattedContent = marked.parse(sanitizedContent);
+            } else {
+                formattedContent = `<pre><code class="language-markdown">${sanitizedContent}</code></pre>`;
+            }
+        } catch {
+            formattedContent = `<pre><code class="language-markdown">${sanitizedContent}</code></pre>`;
+        }
 
         const outputBlock = document.createElement('div');
         outputBlock.className = 'fade-in';
@@ -127,7 +136,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const { explanation, originalCode, optimizedCode } = content;
         
-        const explanationHtml = marked.parse(explanation.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+        let explanationHtml = explanation.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        try {
+            if (typeof marked !== 'undefined' && marked?.parse) {
+                explanationHtml = marked.parse(explanationHtml);
+            } else {
+                explanationHtml = `<pre><code class="language-markdown">${explanationHtml}</code></pre>`;
+            }
+        } catch {
+            explanationHtml = `<pre><code class="language-markdown">${explanationHtml}</code></pre>`;
+        }
 
         const outputBlock = document.createElement('div');
         outputBlock.className = 'fade-in space-y-4';
