@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Helper",
+  "version": "0.0.1",
+  "description": "Placeholder Chrome extension scaffolding for a Google-style structure.",
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "side_panel": {
+    "default_path": "src/sidepanel.html"
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_title": "Open Gemini Helper",
+    "default_popup": "src/popup.html"
+  },
+  "options_page": "src/options.html",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
